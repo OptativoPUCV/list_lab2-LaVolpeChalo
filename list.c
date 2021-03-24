@@ -30,46 +30,69 @@ Node * createNode(const void * data) {
 
 List * createList() {
   List *ay;
+
   ay=(List*)malloc(sizeof(List));
+
      return ay;
 }
 
 void * firstList(List * list) {
+
   if(list->head->data==NULL){
+
     return NULL;
+
   }
+
   list->current=list->head;
+
     return (void*)list->current->data;
+
 }
 
 void * nextList(List * list) {
   if(list->current==NULL){
+
      return NULL;
   }
   if(list->current->next==NULL){
+
       return NULL;
   }
   list->current=list->current->next;
+
     return (void*)list->current->data;
+
 }
 
 void * lastList(List * list) {
+
   if(list->tail==NULL){
+
     return NULL;
+
   }
   list->current=list->tail;
+
     return (void*)list->current->data;
+
 }
 
 void * prevList(List * list) {
   if(list->current==NULL){
+
     return NULL;
+
   }
   if(list->current->prev==NULL){
+
     return NULL;
+
   }
   list->current=list->current->prev;
+
     return (void*)list->current->data;
+
 }
 
 void pushFront(List * list, const void * data) {
@@ -84,10 +107,13 @@ void pushFront(List * list, const void * data) {
     list->head=ay;
     list->current->next=NULL;
     list->current->prev=NULL;
-  }list->current->next=ay;
-  list->current->next->data=data;
-  list->current->next->prev=list->current;
-  list->current->next->next=NULL;
+  }else{
+    list->current->next=ay;
+    list->current->next->data=data;
+    list->current->next->prev=list->current;
+    list->current->next->next=NULL;
+
+  }
 }
 
 void pushBack(List * list, const void * data) {
