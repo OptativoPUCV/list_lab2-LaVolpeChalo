@@ -139,9 +139,9 @@ void pushCurrent(List * list, const void * data) {
 
   ay=createNode(data);
 ///Se revisa si current esta en head///
-  if(list->current!=list->tail){
+  if(list->current!=list->head){
 
-    list->current=list->tail;
+    list->current=list->head;
 
   }
 ///Se toman acciones en caso de que current no esté inicializado///
@@ -161,7 +161,7 @@ void pushCurrent(List * list, const void * data) {
 
     list->current=list->current->next;
 
-    list->tail=list->current;
+    list->head=list->current;
 
   }
 }
