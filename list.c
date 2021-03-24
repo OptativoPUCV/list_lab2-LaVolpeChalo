@@ -39,7 +39,7 @@ void * firstList(List * list) {
     return NULL;
   }
   list->current=list->head;
-    return NULL;
+    return (void*)list->current->data;
 }
 
 void * nextList(List * list) {
