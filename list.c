@@ -82,6 +82,8 @@ void pushFront(List * list, const void * data) {
     list->current=ay;
     list->tail=ay;
     list->head=ay;
+    list->current->next=NULL;
+    list->current->prev=NULL;
   }list->current->next=ay;
   list->current->next->data=data;
   list->current->next->prev=list->current;
