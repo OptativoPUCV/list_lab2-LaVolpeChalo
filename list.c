@@ -35,9 +35,7 @@ List * createList() {
 }
 
 void * firstList(List * list) {
-  List **ay;
-  ay=&list;
-    return ay;
+    return list->tail;
 }
 
 void * nextList(List * list) {
