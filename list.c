@@ -163,6 +163,8 @@ void pushCurrent(List * list, const void * data) {
 
     list->tail=list->current;
 
+    list->head->next=list->tail;
+
   }
 }
 
