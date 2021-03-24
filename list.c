@@ -27,7 +27,7 @@ Node * createNode(const void * data) {
     new->next = NULL;
     return new;
 }
-
+///En esta función se inicializa la lista y se retorna///
 List * createList() {
   List *ay;
 
@@ -36,6 +36,7 @@ List * createList() {
      return ay;
 }
 
+///En esta función se mueve current al primer elemento de la lista///
 void * firstList(List * list) {
 
   if(list->head->data==NULL){
@@ -50,6 +51,7 @@ void * firstList(List * list) {
 
 }
 
+///En esta función, current se mueve al valor que sigue después de el///
 void * nextList(List * list) {
   if(list->current==NULL){
 
@@ -64,7 +66,7 @@ void * nextList(List * list) {
     return (void*)list->current->data;
 
 }
-
+///En esta función currrent se mueve hacia el último dato de la lista///
 void * lastList(List * list) {
 
   if(list->tail==NULL){
@@ -77,7 +79,7 @@ void * lastList(List * list) {
     return (void*)list->current->data;
 
 }
-
+///Current se mueve al nodo anterior a el///
 void * prevList(List * list) {
   if(list->current==NULL){
 
@@ -94,23 +96,35 @@ void * prevList(List * list) {
     return (void*)list->current->data;
 
 }
-
+///Se ingresa un nuevo nodo en la cabecera de la lista///
 void pushFront(List * list, const void * data) {
   Node *ay;
-  ay=createNode(data);
-  if(list->current!=list->head){
-    list->current=list->head;
-  }
-  if(list->current==NULL){
-    list->current=ay;
-    list->tail=ay;
-    list->head=ay;
-  }else{
-    list->current->prev=ay;
-    list->current->prev->next=list->current;
-    list->current=list->current->prev;
-    list->head=list->current;
 
+  ay=createNode(data);
+///Se revisa si current esta en head///
+  if(list->current!=list->head){
+
+    list->current=list->head;
+
+  }
+///Se toman acciones en caso de que current no esté inicializado///
+  if(list->current==NULL){
+
+    list->current=ay;
+
+    list->tail=ay;
+
+    list->head=ay;
+
+  }else{///Se procede a ingresar el nodo en la lista///
+
+    list->current->prev=ay;
+
+    list->current->prev->next=list->current;
+
+    list->current=list->current->prev;
+
+    list->head=list->current;
 
   }
 }
@@ -121,6 +135,35 @@ void pushBack(List * list, const void * data) {
 }
 
 void pushCurrent(List * list, const void * data) {
+  Node *ay;
+
+  ay=createNode(data);
+///Se revisa si current esta en head///
+  if(list->current!=list->tail){
+
+    list->current=list->tail;
+
+  }
+///Se toman acciones en caso de que current no esté inicializado///
+  if(list->current==NULL){
+
+    list->current=ay;
+
+    list->tail=ay;
+
+    list->head=ay;
+
+  }else{///Se procede a ingresar el nodo en la lista///
+
+    list->current->next=ay;
+
+    list->current->next->prev=list->current;
+
+    list->current=list->current->next;
+
+    list->tail=list->current;
+
+  }
 }
 
 void * popFront(List * list) {
