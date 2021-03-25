@@ -39,7 +39,7 @@ List * createList() {
 ///En esta función se mueve current al primer elemento de la lista///
 void * firstList(List * list) {
 
-  if(list->head->data==NULL){
+  if(list->head==NULL){
 
     return NULL;
 
