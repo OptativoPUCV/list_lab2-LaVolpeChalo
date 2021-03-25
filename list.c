@@ -185,11 +185,13 @@ void * popCurrent(List * list) {
     list->current->prev->next=list->current->next;
   }else{
     list->head=list->current->next;
+    list->head->prev=NULL;
   }
   if(list->current->next!=NULL){
     list->current->next->prev=list->current->next;
   }else{
     list->tail=list->current->prev;
+    list->tail->next=NULL;
   }
   free(list->current);
   firstList(list);
