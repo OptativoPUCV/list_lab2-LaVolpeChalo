@@ -181,6 +181,7 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
+  const int* ay=list->current->data;
   if(list->current==list->head){
     list->current->next->prev=NULL;
     list->head=list->current->next;
@@ -198,7 +199,7 @@ void * popCurrent(List * list) {
     list->current->next->prev=list->current->prev;
     free(list->current);
   }
-  return (void*)list->head->data;
+  return (void*)ay;
 }
 
 void cleanList(List * list) {
