@@ -179,7 +179,10 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-  
+  list->current->next->prev=list->current->prev;
+  list->current->prev->next=list->current->next;
+  free(list->current);
+  firstList(list);
   return list;
 }
 
