@@ -138,7 +138,7 @@ void pushCurrent(List * list, const void * data) {
   Node *ay;
 
   ay=createNode(data);
-///Se revisa si current esta en head///
+///Se revisa si current esta en tail///
   if(list->current!=list->tail){
 
     list->current=list->tail;
@@ -167,7 +167,7 @@ void pushCurrent(List * list, const void * data) {
 
   }
 }
-
+///Borra el dato de adelante
 void * popFront(List * list) {
     list->current = list->head;
     return popCurrent(list);
@@ -179,7 +179,26 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    return NULL;
+  if(list->current==list->tail){
+    list->current->next->prev=NULL;
+    list->tail=list->current->next;
+    free(list->current);
+    firstList(list);
+    return list;
+  }
+  if(list->current==list->head){
+    list->current->prev->next=NULL;
+    list->head=list->current->prev;
+    free(list->current);
+    firstList(list);
+    return list;
+  }
+  list->current->next->prev=list->current->prev;
+  list->current->prev->next=list->current->next;
+  free(list->current);
+  firstList(list);
+  return list;
+
 }
 
 void cleanList(List * list) {
