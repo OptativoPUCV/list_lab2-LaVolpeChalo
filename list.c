@@ -194,7 +194,7 @@ void * popCurrent(List * list) {
     list->tail->next=NULL;
   }
   free(list->current);
-  firstList(list);
+  list->current=list->head;
   return list;
 }
 
