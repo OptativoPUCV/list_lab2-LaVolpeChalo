@@ -140,12 +140,6 @@ void pushCurrent(List * list, const void * data) {
   Node *ay;
 
   ay=createNode(data);
-///Se revisa si current esta en tail///
-  if(list->current!=list->tail){
-
-    list->current=list->tail;
-
-  }
 ///Se toman acciones en caso de que current no esté inicializado///
   if(list->current==NULL){
 
@@ -155,18 +149,23 @@ void pushCurrent(List * list, const void * data) {
 
     list->head=ay;
 
-  }else{///Se procede a ingresar el nodo en la lista///
+  }///Se procede a ingresar el nodo en la lista///
+  if(list->current->next==NULL){
 
     list->current->next=ay;
 
     list->current->next->prev=list->current;
 
+    list->tail=list->current->next;
+
     list->current=list->current->next;
 
-    list->tail=list->current;
-
-    list->head->next=list->tail;
-
+  }
+  else{
+    ay->prev=list->current;
+    ay->next=list->current->next;
+    list->current->next->prev=ay;
+    list->current->next=ay;
   }
 }
 ///Borra el dato de adelante
